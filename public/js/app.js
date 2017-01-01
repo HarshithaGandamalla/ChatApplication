@@ -1,14 +1,20 @@
 var socket = io();
 
+
 socket.on('connect', function () {
 	console.log('Conncted to socket.io server!');
 });
 
-socket.on('message', function (message) {
+    socket.on('message', function (message) {
+
+    // var ts=1483307423931;
+       var ts = message.timestamp;
+    var tsmoment=moment.utc(ts);
+     console.log(tsmoment.local().format('h:mm a'));
 	console.log('New message:');
 	console.log(message.text);
 
-   jQuery('.messages').append('<p>'+message.text +   '  </p>');
+   jQuery('.messages').append('<p><strong>'+tsmoment.local().format('h:mm a')+': '+'</strong>'+ ' '+message.text + ' </p>');
 
 });
 
