@@ -4,11 +4,23 @@ var room=getQueryVariable('room');
 
 socket.on('connect', function () {
 	console.log('Conncted to socket.io server!');
+
+
+	socket.emit('joinRoom',{
+		name : name ,
+		room : room
+	});
 });
+
+
+    jQuery('.room-title').text(room);
+
+
+
+
 
     socket.on('message', function (message) {
 
-    // var ts=1483307423931;
     var $messages=jQuery('.messages');
        var ts = message.timestamp;
     var tsmoment=moment.utc(ts);
