@@ -1,0 +1,10 @@
+.vertical-center {  
+/* selecting every element with class vertical-center to give these properties */
+  
+   min-height: 100vh;
+   margin: 0;
+   display: flex;
+   align-items: center;	
+  
+
+}
