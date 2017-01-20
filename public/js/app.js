@@ -22,14 +22,15 @@ socket.on('connect', function () {
     socket.on('message', function (message) {
 
     var $messages=jQuery('.messages');
+    var $message=jQuery('<li class="list-group-item"></li>')
        var ts = message.timestamp;
     var tsmoment=moment.utc(ts);
      console.log(tsmoment.local().format('h:mm a'));
 	console.log('New message:');
 	console.log(message.text);
-   jQuery('.messages').append('<p><strong> '+ message.name +' ' +tsmoment.local().format('h:mm a')+'</p></strong>');
-   jQuery('.messages').append('<p><strong>'+message.text + ' </p>');
-
+   $message.append('<p><strong> '+ message.name +' ' +tsmoment.local().format('h:mm a')+'</p></strong>');
+   $message.append('<p><strong>'+message.text + ' </p>');
+    $messages.append($message);
 });
 
 // Handles submitting of new message
